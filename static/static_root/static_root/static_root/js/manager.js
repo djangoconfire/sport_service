@@ -70,7 +70,6 @@ $("#saveBuddy").on("click", function() {
         data: {
             buddy_id:   $("#buddy_id").val(),
             batch_id:   $("#batch_id").val(),
-            buddy_name: $("#name").val(),
             batch_name: $("#batch_name").val(),
             batch_day:  $("#batch_day").val(),
             batch_time: $("#batch_time").val(),
@@ -85,9 +84,9 @@ $("#saveBuddy").on("click", function() {
     
     $("#buddy_id").val("");
     $("#batch_id").val("");
-    $("#name").val("");
     $("#batch_name").val("");
     $("#batch_day").val("");
     $("#batch_time").val("");
+    $("#myBuddy").modal("toggle");
 
 });
