@@ -2,7 +2,6 @@ from django.contrib.auth import get_user_model
 from django.http import JsonResponse, HttpResponse
 from django.views.generic import View
 from django.shortcuts import render
-from django.contrib.auth.mixins import LoginRequiredMixin
 from models import BatchDetail,Task,Assignment
 
 # Create your views here.   
