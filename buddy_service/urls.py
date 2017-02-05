@@ -21,7 +21,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'',include('buddy.urls',namespace="buddy")),
     url(r'',include('user_profile.urls',namespace="user_profile")),
-
+    # for api
+    url(r'^buddy/', include('api.urls',namespace="api")), 
 ]
 
 urlpatterns +=[
