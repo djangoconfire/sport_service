@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     #local-apps
     'buddy',
     'user_profile',
+    # third-party
+    'rest_framework',
 ]
 
 MIDDLEWARE_CLASSES = [

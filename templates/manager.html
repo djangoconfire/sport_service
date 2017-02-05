@@ -5,6 +5,7 @@
 				<p>This is the place to create assignments for buddies. Add a new Assignment by clicking below button</p>
 
 				<center><a class="btn btn-primary" id="addTask" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Add New Assignment</a></center>
+
 				<a class="btn btn-warning" id="addBuddyDetail" data-toggle="modal" data-target="#myBuddy"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Add Buddy Detail</a>
 			</div>
 		</div>
@@ -34,12 +35,52 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary" id="saveButton">Save Task</button>
+					<button type="button" class="btn btn-primary" id="saveButton">Save Assignment</button>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+
+	<!-- Buddy Detail MOdal popup-->
+
+	<div class="modal" id="myBuddy" style="margin-top:5%">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Buddy details</h4>
+				</div>
+				<div class="modal-body">
+					{% csrf_token %}
+					<div class="form-group has-warning">
+						<label class="control-label" for="buddy_id" style="color:black;">Buddy Id</label>
+						<input type="text" class="form-control" id="buddy_id">
+	
+						<label class="control-label" for="batch_id" style="color:black;">Batch Id</label>
+						<input type="text" class="form-control" id="batch_id">
+
+						<label class="control-label" for="name" style="color:black;">Name</label>
+						<input type="text" class="form-control" id="name">
+
+						<label class="control-label" for="batch_name" style="color:black;">Batch Name</label>
+						<input type="text" class="form-control" id="batch_name">
+
+						<label class="control-label" for="batch_day" style="color:black;">Batch Day</label>
+						<input type="text" class="form-control" id="batch_day">
+
+						<label class="control-label" for="batch_time" style="color:black;">Batch Time</label>
+						<input type="text" class="form-control" id="batch_time">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" id="saveBuddy">Save Buddy</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>	
+
 <div class="container attachData">
 	<div class="row">
 		{% for task in tasks %}

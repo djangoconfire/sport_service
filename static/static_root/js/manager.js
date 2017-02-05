@@ -59,3 +59,35 @@ $("#saveButton").on("click", function() {
     $("#myModal").modal("toggle");
 
 });
+
+// for buddy detail
+$("#saveBuddy").on("click", function() {
+
+    var csrftoken = getCookie('csrftoken');
+    $.ajax({
+        type: "POST",
+        url: window.location.origin + "/buddy/assign/",
+        data: {
+            buddy_id:   $("#buddy_id").val(),
+            batch_id:   $("#batch_id").val(),
+            buddy_name: $("#name").val(),
+            batch_name: $("#batch_name").val(),
+            batch_day:  $("#batch_day").val(),
+            batch_time: $("#batch_time").val(),
+            csrfmiddlewaretoken: csrftoken,
+            
+        },
+        success: function(data) {
+            $.notify(data.message, "info")
+        }
+    });
+    // Reset modal
+    
+    $("#buddy_id").val("");
+    $("#batch_id").val("");
+    $("#name").val("");
+    $("#batch_name").val("");
+    $("#batch_day").val("");
+    $("#batch_time").val("");
+
+});
