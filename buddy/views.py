@@ -2,9 +2,25 @@ from django.contrib.auth import get_user_model
 from django.http import JsonResponse, HttpResponse
 from django.views.generic import View
 from django.shortcuts import render
-from models import BatchDetail,Task,Assignment
+from models import Task,Assignment,BuddyDetail
 
 # Create your views here.   
+class BuddyView(View):
+    def post(self, request):
+        buddy_id= request.POST.get("buddy_id")
+        batch_id= request.POST.get("batch_id")
+        batch_name= request.POST.get("batch_name")
+        batch_time= request.POST.get("batch_time")
+        batch_day= request.POST.get("batch_day")
+        print buddy_id,batch_day
+        user= request.user
+        newBuddy = BuddyDetail(buddy_id=buddy_id,batch_id=batch_id,\
+                        batch_name=batch_name,batch_day=batch_day,\
+                        batch_time=batch_time)
+        newBuddy.save()
+
+        return JsonResponse({"message": "Successfully Saved!"})
+
 
 class TaskView(View):
     def post(self, request):

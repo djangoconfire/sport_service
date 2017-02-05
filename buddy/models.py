@@ -4,15 +4,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
-class BatchDetail(models.Model):
-	batch_id	=models.IntegerField(unique=True)
-	batch_name	=models.CharField(max_length=200)
-	batch_day	=models.CharField(max_length=100)
-	batch_time	=models.DateTimeField(blank=True,null=True)
-
-	def __unicode__(self):
-		return self.batch_name
-
 class Assignment(models.Model):
     status = models.IntegerField(default = 1)
     buddy  = models.ForeignKey(User, related_name="buddy")
@@ -20,12 +11,16 @@ class Assignment(models.Model):
 
 
 class BuddyDetail(models.Model):
-	buddy_id	=models.IntegerField(unique=True)
-	buddy_name	=models.CharField(max_length=200)
-	batch       =models.ForeignKey(BatchDetail)
+	buddy_id		=models.IntegerField(unique=True)
+	batch_id		=models.IntegerField(unique=True)
+	batch_name		=models.CharField(max_length=200)
+	batch_day		=models.CharField(max_length=100)
+	batch_time		=models.TimeField(blank=True,null=True)
+	assignements	=models.ManyToManyField(Assignment,blank=True,null=True) 
+	
 
 	def __unicode__(self):
-		return self.buddy_name
+		return self.buddy_id
 
 
 
