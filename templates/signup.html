@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+{% block content %}
+    <h1>Sign Up</h1>
+    <br>
+    <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <img src="/static/img/logo-clean_16x16.png" />&nbsp;&nbsp;<strong>Already have an account?</strong> <a href="/" class="alert-link">Login here</a> instead, mate!
+    </div>
+    <div class="signup">
+        <form action="{% url 'user_profile:signup' %}" method="post" role="form">
+            {% csrf_token %}
+            {% for field in form.visible_fields %}
+                <div class="form-group{% if field.errors %}     has-error{% endif %}">
+                    <label for="{{ field.label }}">{{ field.label }}</label>
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <span class="help-block">{{ field.help_text|safe }}</span>
+                    {% endif %}
+
+                    {% for error in field.errors %}
+                        <label class="control-label">{{ error }}</label>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-warning btn-block">Let me in</button>
+        </form>
+    <hr>
+
+    <div id="status">
+    </div>
+{% endblock %}

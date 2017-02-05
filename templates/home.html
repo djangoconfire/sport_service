@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block js_block %}
+	{% if user.is_staff %}
+			<script src="{% static 'js/manager.js' %}"></script>
+	{% else %}
+			<script src="{% static 'js/buddy.js' %}"></script>
+	{% endif %}
+{% endblock %}
+
+{% block content %}
+
+	{% if user.is_staff %}
+
+	    {% include "manager.html" with users=users tasks=tasks %}
+
+	{% else %}
+
+	    {% include "buddy_dashboard.html" with tasks=tasks %}
+
+	{% endif %}
+
+{% endblock %}
+
+
