@@ -66,7 +66,7 @@ $("#saveBuddy").on("click", function() {
     var csrftoken = getCookie('csrftoken');
     $.ajax({
         type: "POST",
-        url: window.location.origin + "/buddy/assign/",
+        url: window.location.origin + "/buddy/create/",
         data: {
             buddy_id:   $("#buddy_id").val(),
             batch_id:   $("#batch_id").val(),

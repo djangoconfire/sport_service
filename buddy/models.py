@@ -15,7 +15,7 @@ class BuddyDetail(models.Model):
 	batch_id		=models.IntegerField(unique=True)
 	batch_name		=models.CharField(max_length=200)
 	batch_day		=models.CharField(max_length=100)
-	batch_time		=models.TimeField(blank=True,null=True)
+	batch_time		=models.TimeField(blank=True,null=True,help_text="Time format is :HH:MM:SS")
 	assignements	=models.ManyToManyField(Assignment,blank=True,null=True) 
 	
 

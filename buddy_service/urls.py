@@ -18,13 +18,20 @@ from django.contrib import admin
 from django.conf import settings
 
 urlpatterns = [
+	# admin url
     url(r'^admin/', admin.site.urls),
+
+    # buddy app url here
     url(r'',include('buddy.urls',namespace="buddy")),
+
+    # userprofile app url
     url(r'',include('user_profile.urls',namespace="user_profile")),
+
     # for api
     url(r'^buddy/', include('api.urls',namespace="api")), 
 ]
 
+# staticfiles storage url 
 urlpatterns +=[
         url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
 ]

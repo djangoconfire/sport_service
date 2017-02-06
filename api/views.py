@@ -22,27 +22,34 @@ class BuddyPost(generics.ListCreateAPIView):
 class BuddyDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = BuddyDetail.objects.all()
     serializer_class = BuddyDetailSerializer 
-    lookup_field="buddy_id"       
+    lookup_field="buddy_id"    
 
 
-@api_view(['GET','Delete'])
-def buddy_disable(request,buddy_id):
-    """
-    List all snippets, or create a new snippet.
-    """
-
-    try:
-        buddy = BuddyDetail.objects.get(buddy_id=buddy_id)
-    except Snippet.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+# class BuddyDisable(generics.RetrieveDestroyAPIView):
+#     queryset = BuddyDetail.objects.all()
+#     serializer_class = BuddyDetailSerializer 
+#     lookup_field="buddy_id" 
 
 
-    if request.method == 'GET':
-        serializer = BuddyDetailSerializer(buddy)
-        return Response(serializer.data)
 
-    elif request.method == 'DELETE':
-        buddy.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)    
+# @api_view(['GET','Delete'])
+# def buddy_disable(request,buddy_id):
+#     """
+#     List all buddies, or create a new buddy.
+#     """
 
-    
+#     try:
+#         buddy = BuddyDetail.objects.get(buddy_id=buddy_id)
+#     except BuddyDetail.DoesNotExist:
+#         return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+#     if request.method == 'GET':
+#         serializer = BuddyDetailSerializer(buddy)
+#         return Response(serializer.data)
+
+#     elif request.method == 'DELETE':
+#         buddy.delete()
+#         return Response(status=status.HTTP_204_NO_CONTENT)    
+
+#     
