@@ -20,16 +20,16 @@ $('.selectpicker').selectpicker({
 });
 
 $("#saveButton").on("click", function() {
-    var studentIDs = [],
-        studentNames = [];
-    $("#students").find("option:selected").each(function(index) {
-        studentIDs.push($(this).attr("value"));
-        studentNames.push($(this).text());
+    var buddies_ids = [],
+        buddies_names = [];
+    $("#buddies").find("option:selected").each(function(index) {
+         buddies_ids.push($(this).attr("value"));
+        buddies_names.push($(this).text());
     });
     // Create panel with saved task
     var spanHTML = "";
-    for (var student of studentNames) {
-        spanHTML += '<span class="label label-success">' + student + '</span>'
+    for (var buddy of buddies_names) {
+        spanHTML += '<span class="label label-success">' + buddy + '</span>'
     }
     panelHTML = '<div class="col-md-4"><div class="panel panel-primary">' +
         '<div class="panel-heading">' +
@@ -46,7 +46,7 @@ $("#saveButton").on("click", function() {
             name: $("#taskName").val(),
             description: $("#focusedInput").val(),
             csrfmiddlewaretoken: csrftoken,
-            students: studentIDs
+            buddies: buddies_ids
         },
         success: function(data) {
             $.notify(data.message, "info")
@@ -56,7 +56,7 @@ $("#saveButton").on("click", function() {
     $("#taskName").val("");
     $("#focusedInput").val("");
     $(".selectpicker").selectpicker("deselectAll")
-    $("#myModal").modal("toggle");
+    $("#assignment").modal("toggle");
 
 });
 
@@ -87,6 +87,6 @@ $("#saveBuddy").on("click", function() {
     $("#batch_name").val("");
     $("#batch_day").val("");
     $("#batch_time").val("");
-    $("#myBuddy").modal("toggle");
+    $("#buddy").modal("toggle");
 
 });
