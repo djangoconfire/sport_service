@@ -7,25 +7,26 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
 
-
+# fetching list of buddies
 class BuddyList(generics.ListAPIView):
     queryset = BuddyDetail.objects.all()
     serializer_class = BuddyDetailSerializer
 
+# create a new buddy
 class BuddyPost(generics.ListCreateAPIView):
     queryset = BuddyDetail.objects.all()
     serializer_class = BuddyDetailSerializer
     permission_classes = (permissions.IsAdminUser,)
 
 
-
+# Delete a buddy
 class BuddyDisable(generics.DestroyAPIView):
     queryset = BuddyDetail.objects.all()
     serializer_class = BuddyDetailSerializer 
     lookup_field="buddy_id"  
 
 
-
+# getting detail of a particular buddy
 class BuddyDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = BuddyDetail.objects.all()
     serializer_class = BuddyDetailSerializer 
@@ -33,32 +34,4 @@ class BuddyDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 
-
-# class BuddyDisable(generics.RetrieveDestroyAPIView):
-#     queryset = BuddyDetail.objects.all()
-#     serializer_class = BuddyDetailSerializer 
-#     lookup_field="buddy_id" 
-
-
-
-# @api_view(['GET','Delete'])
-# def buddy_disable(request,buddy_id):
-#     """
-#     List all buddies, or create a new buddy.
-#     """
-
-#     try:
-#         buddy = BuddyDetail.objects.get(buddy_id=buddy_id)
-#     except BuddyDetail.DoesNotExist:
-#         return Response(status=status.HTTP_404_NOT_FOUND)
-
-
-#     if request.method == 'GET':
-#         serializer = BuddyDetailSerializer(buddy)
-#         return Response(serializer.data)
-
-#     elif request.method == 'DELETE':
-#         buddy.delete()
-#         return Response(status=status.HTTP_204_NO_CONTENT)    
-
-#     
+  

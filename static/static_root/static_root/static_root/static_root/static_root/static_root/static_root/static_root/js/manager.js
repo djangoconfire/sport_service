@@ -31,7 +31,8 @@ $("#saveButton").on("click", function() {
     for (var buddy of buddies_names) {
         spanHTML += '<span class="label label-success">' + buddy + '</span>'
     }
-    panelHTML = '<div class="col-md-4"><div class="panel panel-primary">' +
+    
+    panelHTML ='<div class="col-md-4"><div class="panel panel-primary">' +
         '<div class="panel-heading">' +
         '<h3 class="panel-title">' + $("#taskName").val() + '</h3>' +
         '</div><div class="panel-body">' + $("#focusedInput").val() + '<br />' + spanHTML + '</div>' +
