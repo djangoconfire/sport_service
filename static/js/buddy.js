@@ -23,12 +23,13 @@ var actions = {
     5: "disapprooved"
 }
 
-// Change labels to respective code
+// labels to respective code
 $(".label-success").each(function() {
     action = $(this).text();
     $(this).text(actions[action]);
 });
 
+// dropdown click functionality
 $(".dropdown-menu a").click(function() {
     spanText = $(this).text()
     spanElem = $(this).parent().parent().parent().parent().find("span.label-success");

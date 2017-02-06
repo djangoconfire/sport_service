@@ -26,7 +26,7 @@ class TaskView(View):
     def post(self, request):
         title = request.POST.get("name")
         description = request.POST.get("description")
-        buddyID = request.POST.getlist("students[]")
+        buddyID = request.POST.getlist("buddies[]")
         print title, description, buddyID
         # Create a new task
         user= request.user

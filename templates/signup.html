@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% load staticfiles i18n %}
+
 {% block head %}
      <link href="{% static 'css/buddy.css'%}" rel="stylesheet">
 {% endblock %}
+
 {% block content %}
     <div class="signup_container">
         <h1>Sign Up</h1>
@@ -11,12 +13,14 @@
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <strong>Already have an account?</strong> <a href="/" class="alert-link">Login here</a> instead !!!
         </div>
+
         <div class="signup">
             <form action="{% url 'user_profile:signup' %}" method="post" role="form">
                 {% csrf_token %}
                 {% for field in form.visible_fields %}
                     <div class="form-group{% if field.errors %}     has-error{% endif %}">
-                        <label for="{{ field.label }}">{{ field.label }}</label>
+                        <label for="{{ field.label }}">{{   field.label }}
+                        </label>
                         {{ field }}
 
                         {% if field.help_text %}
@@ -28,11 +32,14 @@
                         {% endfor %}
                     </div>
                 {% endfor %}
+
                 <button type="submit" class="btn btn-warning btn-block">Let me in</button>
             </form>
             <hr>
         </div>
+
         <div id="status">
+        
         </div>
     </div>    
 {% endblock %}

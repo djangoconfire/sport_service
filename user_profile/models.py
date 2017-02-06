@@ -4,12 +4,11 @@ from django.db import models
 from django.contrib.auth.models import User 
 
 
-class UserProfile( models.Model ):
-    user         = models.OneToOneField( User)                                      
+class UserProfile( models.Model):
+    user = models.OneToOneField( User)                                      
         
-    def __str__( self ):
-        return str( self.user.username)
-
+    def __unicode__(self):
+        return self.user.username
 
     class Meta :
         ordering = ['user']

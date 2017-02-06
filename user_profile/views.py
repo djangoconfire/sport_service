@@ -10,7 +10,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate,login,\
                                 get_user_model,logout
 
-
+# User Dashboard 
 @login_required
 def profile(request):
     users = get_user_model().objects.filter(is_staff=False)
@@ -21,6 +21,8 @@ def profile(request):
         assignments = Assignment.objects.filter(buddy=request.user)
     return render(request,'home.html',{'users': users, 'tasks': tasks})
 
+
+# Make a login here
 def login_view(request):
     if request.method=="POST":
         form=UserLoginForm(request.POST or None)
@@ -34,6 +36,7 @@ def login_view(request):
         form=UserLoginForm()
     return render(request,'login.html',{'form':form})          
 
+# Logout
 @login_required
 def user_logout(request):
     try :
@@ -42,14 +45,12 @@ def user_logout(request):
     except : 
         return HttpResponse("something went wrong")
 
-      
-  
+# Create a New Account
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if not form.is_valid():
             return render(request, 'signup.html', {'form': form})
-
         else: 
             username = form.cleaned_data.get('username')
             email = form.cleaned_data.get('email')

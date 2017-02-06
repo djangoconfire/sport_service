@@ -7,6 +7,7 @@ from user_profile.models import UserProfile
 
 User=get_user_model()
 
+# utitlity function
 def InvalidUsernameValidator(value):
    if '@' in value or '+' in value or '-' in value:
          raise ValidationError('Enter a valid username.')
@@ -19,6 +20,7 @@ def UniqueUsernameIgnoreCaseValidator(value):
    if User.objects.filter(username__iexact=value).exists():
          raise ValidationError('User with this Username already exists.')
 
+# User Registration Form ------
 class SignUpForm(forms.ModelForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}),
          max_length=30,
@@ -51,7 +53,7 @@ class SignUpForm(forms.ModelForm):
             self._errors['password'] = self.error_class(['Passwords don\'t match'])
         return self.cleaned_data
 
-
+# USer Login Form-----
 class UserLoginForm(forms.Form):
     username = forms.CharField(label="Username", max_length=30, 
                                widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'username'}))
