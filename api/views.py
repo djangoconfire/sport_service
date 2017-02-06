@@ -16,7 +16,7 @@ class BuddyList(generics.ListAPIView):
 class BuddyPost(generics.ListCreateAPIView):
     queryset = BuddyDetail.objects.all()
     serializer_class = BuddyDetailSerializer
-    permission_classes = (permissions.IsAdminUser,)
+    #permission_classes = (permissions.IsAdminUser,)
 
 
 # Delete a buddy
