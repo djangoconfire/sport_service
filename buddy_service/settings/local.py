@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'buddy',
     'user_profile',
     'api',
+    
     # third-party
     'rest_framework',
 ]

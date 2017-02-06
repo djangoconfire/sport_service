@@ -17,12 +17,21 @@ class BuddyPost(generics.ListCreateAPIView):
     serializer_class = BuddyDetailSerializer
     # permission_classes = (permissions.IsAdminUser,)
 
-    
+
+
+class BuddyDisable(generics.DestroyAPIView):
+    queryset = BuddyDetail.objects.all()
+    serializer_class = BuddyDetailSerializer 
+    lookup_field="buddy_id"  
+
+
 
 class BuddyDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = BuddyDetail.objects.all()
     serializer_class = BuddyDetailSerializer 
-    lookup_field="buddy_id"    
+    lookup_field="buddy_id"  
+
+
 
 
 # class BuddyDisable(generics.RetrieveDestroyAPIView):

@@ -4,11 +4,10 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
+
 class Assignment(models.Model):
     status = models.IntegerField(default = 1)
     buddy  = models.ForeignKey(User, related_name="buddy")
-
-
 
 class BuddyDetail(models.Model):
 	buddy_id		=models.IntegerField(unique=True)
@@ -21,7 +20,6 @@ class BuddyDetail(models.Model):
 
 	def __unicode__(self):
 		return self.buddy_id
-
 
 
 class Task(models.Model):
