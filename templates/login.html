@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block head %}
-    <link href="{% static 'css/buddy.css'%}" rel="stylesheet">
+     <link href="{% static 'css/buddy.css'%}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -12,7 +12,7 @@
     
         <div class="alert alert-info alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <img src="/static/img/logo-clean_16x16.png" />&nbsp;&nbsp;<strong>New to Buddy Service?</strong> <a href="/sign_up/" class="alert-link">Signup with us here!</a>
+            <strong>New to <span style="color:orange;">Buddy Service?</span></strong> <a href="/sign_up/" class="alert-link">Signup with us here!</a>
         </div>
         
         <form method="post" action="">{% csrf_token %}
